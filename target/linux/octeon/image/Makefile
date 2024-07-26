@@ -46,8 +46,8 @@ TARGET_DEVICES += itus_shield-router
 TPLER7206_CMDLINE:=bootoctlinux $loadaddr coremask=0xffff numcores=2 rootfstype=squashfs,jffs2 noinitrd console=ttyS0,115200 board=OSG-PRO mtdparts=spi32766.0:2M(bootloader),8M(kernel),15M(rootfs),128K(device-info),64K(support-list),576K(firmware-info),128K(tddp),128K(log),5M(rootfs_data),32M@0x000000(firmware)
 define Device/tplink_er7206-v1
   DEVICE_VENDOR := TP-Link
-  DEVICE_MODEL := ER605
-  DEVICE_VARIANT := v2
+  DEVICE_MODEL := ER7206
+  DEVICE_VARIANT := v1
   DEVICE_PACKAGES := -wpad-basic-mbedtls kmod-usb3 -uboot-envtools
   KERNEL_IN_UBI := 1
   KERNEL_LOADADDR := 0x82200000
