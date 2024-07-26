@@ -4,6 +4,7 @@
 
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/image.mk
+include ./common-tplink.mk
 
 define Build/append-dtb-to-elf
 	$(TARGET_CROSS)objcopy --update-section .appended_dtb=$(KDIR)/image-$(DEVICE_DTS).dtb $@
@@ -51,7 +52,7 @@ define Device/tplink_er7206-v1
   KERNEL_IN_UBI := 1
   KERNEL_LOADADDR := 0x82200000
   DEVICE_DTS := cn6xxx
-  KERNEL := kernel-bin | relocate-kernel 0x80001000 | lzma | fit lzma $$(wildcard $(DTS_DIR)/$(DEVICE_DTS).dts)
+  KERNEL := kernel-bin | relocate-kernel $(KERNEL_LOADADDR) | lzma | fit lzma $$(wildcard $(DTS_DIR)/$(DEVICE_DTS).dts)
   IMAGES += sysupgrade.tar
   IMAGE_SIZE := 127744k
 endef
